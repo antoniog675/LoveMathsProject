@@ -43,9 +43,11 @@ function checkAnswer() {
 
     if(isCorrect) {
         alert(`${userAnswer} IS the correct answer!`)
+        incrementScore()
     }
     else {
         alert(`${userAnswer} is the incorrect answer, The right answer was ${calculatedAnswer}`)
+        incrementScore()
     }
 
     runGame(calculatedAnswer[1])
@@ -69,12 +71,21 @@ function calculateCorrectAnswer() {
     }
 }
 
+/**
+ * Gets the current score from the DOM and adds 1 if correct
+ */
 function incrementScore() {
-
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    document.getElementById("score").innerText = ++oldScore;
 }
 
+/**
+ * Gets the current amount of times the user has got the wrong answer and adds 1 for 
+ * each mistake
+ */
 function incrementWrongAnswer() {
-
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText = ++oldScore;
 }
 
 // ADD THE 3 QUESTIONS - 
